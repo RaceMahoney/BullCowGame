@@ -14,7 +14,7 @@ using FText = std::string;
 using int32 = int;
 
 //function prototypes as outside a class
-void PrintIntro();
+FString PrintIntro();
 void PlayGame();
 FText GetValidGuess();
 bool AskToPlayAgain();
@@ -33,7 +33,7 @@ int main() {
 	return 0; //exit game
 }
 
-void PrintIntro() {
+FString PrintIntro() {
 
 	std::cout << "\nWelcome to Bulls and Cows, a fun word game!\n\n";
 	
@@ -47,17 +47,26 @@ void PrintIntro() {
 	std::cout << "///////   ///////  //////// //////// ////////        //      // //      /// ///////            //////    ///////   //       // ////////\n" << std::endl;
 
 	std::cout << "Tip 1: \tAn isogram (also known as a 'nonpattern word') is a word with no repeating letters.\n";
-	std::cout << "Tip 2: \tBULLS = correct letters in the correct places. \n\tCOWS = correct letters in incorrect places.";
+	std::cout << "Tip 2: \tBULLS = correct letters in the correct places. \n\tCOWS = correct letters in incorrect places.\n";
+
+	std::cout << "\nChoose your level of difficulty (easy, med, hard)\n";
+	FString difficulty = "";
+	std::getline(std::cin, difficulty);
+	std::cout << std::endl;
+	BCGame.Reset(difficulty);
+
 	std::cout << "Can you guess the " << BCGame.GetHiddenWordLength();
 	std::cout << " letter isogram I'm thinking of?\n" << std::endl;;
 	
+	
+	return difficulty;
 }
 
-
+//making a change
 //plays a single game to completion
 void PlayGame()
 {	
-	BCGame.Reset();
+	
 	int32 MaxTries = BCGame.GetMaxTries();
 
 	//while the game is NOT won and there are still tries remaining

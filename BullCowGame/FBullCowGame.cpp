@@ -7,17 +7,28 @@
 #define TMap std::map
 using int32 = int;
 
-void FBullCowGame::Reset() {
+void FBullCowGame::Reset(FString difficulty) {
 
-	const FString HIDDEN_WORD = "planet"; //MUST be an isogram
-	MyHiddenWord = HIDDEN_WORD;
+	if (difficulty == "easy") {
+		const FString HIDDEN_WORD = "ant"; //MUST be an isogram
+		MyHiddenWord = HIDDEN_WORD;
+	}
+	else if (difficulty == "med") {
+		const FString HIDDEN_WORD = "race"; //MUST be an isogram
+		MyHiddenWord = HIDDEN_WORD;
+	}
+	else if (difficulty == "hard") {
+		const FString HIDDEN_WORD = "whisk"; //MUST be an isogram
+		MyHiddenWord = HIDDEN_WORD;
+	}
+	
 	MyCurrentTry = 1;
 	bGameIsWon = false;
 	return;
 }
 
 FBullCowGame::FBullCowGame() { //default construcotr 
-	Reset();
+	//Reset();
 }
 
 int32 FBullCowGame::GetCurrentTry() const {return MyCurrentTry;}
